@@ -10,7 +10,10 @@ import
     ListGroupItem, Media
 } 
 from 'reactstrap'
+<<<<<<< HEAD
 import { notification, Icon, Alert } from 'antd'
+=======
+>>>>>>> 74c87042f406ea98675fd9d24d25dd2bd70e3ecf
 import * as firebase from 'firebase'
 export default class DashBoard extends React.Component {
     constructor(props) {
@@ -37,6 +40,7 @@ export default class DashBoard extends React.Component {
                     Sensor: Sensor
                 })
             }
+<<<<<<< HEAD
             for (let i = 0;i < Sensor.status.length;i++) {
                 if (Sensor[i].status === 'Alert' || Sensor[i].status === 'alert' || Sensor[i].status === 'Error' || Sensor[i].status === 'error') {
                     let Sound = document.getElementById("Sound");
@@ -54,11 +58,41 @@ export default class DashBoard extends React.Component {
             };
             notification.open(args);
         }
+=======
+            console.log(Sensor[0].status);
+            if (Sensor[0].status === 'Alert') {
+                let Sound = document.getElementById("Sound");
+                Sound.autoplay = true;
+                Sound.load();
+            }
+        })
+    }
+    renderSensor = () => {
+       return (
+            Object.keys(this.state.Sensor).map((key)=>(
+            <tr key={key}>
+                <td>
+                    {this.state.Sensor[key].type}
+                </td>
+                <td>
+                    {this.state.Sensor[key].value}
+                </td>
+                <td>
+                    {this.state.Sensor[key].status}
+                </td>
+            </tr>
+        ))
+       )
+>>>>>>> 74c87042f406ea98675fd9d24d25dd2bd70e3ecf
     }
     render() {
         let logOut = () => {
             firebase.auth().signOut().then(function() {
+<<<<<<< HEAD
                 location.href = '/'
+=======
+                window.location = '/'
+>>>>>>> 74c87042f406ea98675fd9d24d25dd2bd70e3ecf
             }, function(error) {
                 console.error('Sign Out Error', error);
             });
@@ -98,9 +132,17 @@ export default class DashBoard extends React.Component {
                         <img src="static/image/logo/alertsystem.jpg" class="profileImage"/>
                         <li style={{fontSize:15, fontWeight:'bold'}}><a>admin</a></li>
                     </div>
+<<<<<<< HEAD
                         <audio id="Sound" controls>
                             <source src="static/sound/SOS-effect.mp3" type="audio/mpeg"/>
                         </audio>
+=======
+                        <div id="SoundAlert">
+                            <audio id="Sound" controls>
+                                <source src="static/sound/SOS-effect.mp3" type="audio/mpeg"/>
+                            </audio>
+                        </div>
+>>>>>>> 74c87042f406ea98675fd9d24d25dd2bd70e3ecf
                         <div className="mainDashBoard col-md-9" style={{marginTop:50,marginBottom:50}}>
                             <h4 style={{marginLeft: -17, textTransform: 'uppercase', fontSize: 22, marginBottom: 36, fontWeight: 'bold', marginTop:30}}>
                             my board status info</h4>
@@ -111,7 +153,11 @@ export default class DashBoard extends React.Component {
                                     </Media>
                                     <Media body>
                                         <Media style={{fontSize: 18, textTransform: 'capitalize', marginTop:19}}>
+<<<<<<< HEAD
                                         Temperature
+=======
+                                        Temp
+>>>>>>> 74c87042f406ea98675fd9d24d25dd2bd70e3ecf
                                         </Media>
                                     </Media>
                                 </Media>
@@ -146,6 +192,7 @@ export default class DashBoard extends React.Component {
                                     </tr>
                                 </thead>
                                     <tbody>
+<<<<<<< HEAD
                                         {
                                             Object.keys(this.state.Sensor).map((key)=>(
                                                 <tr key={key}>
@@ -161,6 +208,9 @@ export default class DashBoard extends React.Component {
                                                 </tr>
                                             ))
                                         }
+=======
+                                        {this.renderSensor()}
+>>>>>>> 74c87042f406ea98675fd9d24d25dd2bd70e3ecf
                                     </tbody>
                                 </Table>
                             </div>
@@ -228,9 +278,12 @@ export default class DashBoard extends React.Component {
                     font-size:16px;
                     border-bottom:0 !important;
                 }
+<<<<<<< HEAD
                 .table td, .table th {
                     border-top:0 !important;
                 }
+=======
+>>>>>>> 74c87042f406ea98675fd9d24d25dd2bd70e3ecf
 
                 #SoundAlert {
                     display:none;
